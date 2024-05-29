@@ -37,7 +37,7 @@ form {
 input {
   padding-left: 10px;
   height: 40px;
-  width: 250px;
+  width: 280px;
   font-size: large;
   border: none;
   background-color: #fff2f2;
@@ -59,4 +59,21 @@ button {
   background-color: #252120;
   letter-spacing: 1px;
   cursor: pointer;
+}
+
+.respostas {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    width: 273.188px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-color: #cccccc96;
+}
+.riscado {
+    text-decoration: line-through;
 }
