@@ -1,13 +1,19 @@
 $(document).ready(function () {
+  // Array para armazenar as tarefas adicionadas
+  const tarefasList = [];
+
   // Adicionar nova tarefa ao enviar o formulário
   $("form").on("submit", function (e) {
     e.preventDefault();
 
-    // Obtém o valor do input
-    const tarefa = $("form input[type='text']").val();
+    // Obtém o valor do input e remove espaços em branco do início e do fim
+    const tarefa = $("form input[type='text']").val().trim();
 
-    // Verifica se o valor não está vazio
-    if (tarefa) {
+    // Verifica se o valor não está vazio e se a tarefa não foi adicionada anteriormente
+    if (tarefa && !tarefasList.includes(tarefa)) {
+      // Adiciona a tarefa ao array
+      tarefasList.push(tarefa);
+
       // Cria um novo item de lista com a tarefa e define o estilo de display
       const novoItem = $("<li></li>").text(tarefa).css("display", "none");
 
@@ -15,10 +21,16 @@ $(document).ready(function () {
       $(".respostas ul").append(novoItem);
 
       // Exibe o novo item com uma animação de desvanecimento
-      novoItem.fadeIn();
+      novoItem.fadeIn(900);
 
       // Limpa o campo de entrada
       $("form input[type='text']").val("");
+    } else if (tarefasList.includes(tarefa)) {
+      // Caso a tarefa já tenha sido adicionada, exibe uma mensagem
+      alert(`A tarefa "${tarefa}" já foi adicionada!`);
+    } else {
+      // Caso o campo esteja vazio, exibe uma mensagem
+      alert("O campo de tarefa está vazio!");
     }
   });
 
